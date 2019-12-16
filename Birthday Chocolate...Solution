@@ -1,0 +1,57 @@
+/*********************************************************************************
+Complete the birthday function in the editor below. It should return an integer denoting the number of ways Lily can divide the chocolate bar.
+
+birthday has the following parameter(s):
+
+s: an array of integers, the numbers on each of the squares of chocolate
+d: an integer, Ron's birth day
+m: an integer, Ron's birth month
+******************************************************************************************************/
+
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the birthday function below.
+#fuction starts here
+def birthday(s, d, m):
+    k=0;l=0;f=0;x=0;
+    n=len(s)-m
+    for i in range(n+1):
+        x=i
+        while(x<m+i):
+            l=l+s[x]
+            x+=1
+        if(l==d):
+            f=f+1
+            l=0
+        else:
+            l=0
+    return f
+
+#end of function  
+    
+ 
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    s = list(map(int, input().rstrip().split()))
+
+    dm = input().rstrip().split()
+
+    d = int(dm[0])
+
+    m = int(dm[1])
+
+    result = birthday(s, d, m)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
