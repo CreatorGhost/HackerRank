@@ -1,0 +1,59 @@
+'''
+Python Code
+           Function Description
+
+Complete the divisibleSumPairs function in the editor below. It should return the integer count of pairs meeting the criteria.
+
+divisibleSumPairs has the following parameter(s):
+
+n: the integer length of array ar
+ar: an array of integers
+k: the integer to divide the pair sum by
+
+NOte:Please be care full of indentation
+'''
+
+
+
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+# Complete the divisibleSumPairs function below.
+def divisibleSumPairs(n, k, ar):
+    o=0
+    for i in range (n-1):
+        j=i+1
+        while(j<n):
+            add=ar[i]+ar[j]
+            j+=1
+            if(add%k==0):
+                o+=1
+    return o
+
+
+
+    
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    nk = input().split()
+
+    n = int(nk[0])
+
+    k = int(nk[1])
+
+    ar = list(map(int, input().rstrip().split()))
+
+    result = divisibleSumPairs(n, k, ar)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
+
+
