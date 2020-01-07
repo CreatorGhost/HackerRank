@@ -1,0 +1,50 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+def findIt(u,p,a):  #function just to add every single hourglass
+    an=0    #to add every elements
+    for i in range (u,u+3):     #this function neds to sole for 3x3 so start and end with 3
+        
+        for j in range (p,p+3):
+            if i!=u+1:
+                an=a[i][j]+an   #add all three when its not the secound row
+            if i==u+1:
+                if j==p+1:
+                    an=a[i][j]+an   #add only the second element of sceond row
+        
+    return an   #retunig the result of added 3x3 matrics
+
+
+
+
+
+def hourglassSum(a):
+    s=[] #list to append all the adition of values
+    for i in range(len(a)-2):   #loop will 
+        for j in range(len(a)-2):
+            k=findIt(i,j,a) #appending all the possible output
+
+            s.append(k)
+    return max(s)   #returning the max element
+        
+
+
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    arr = []
+
+    for _ in range(6):
+        arr.append(list(map(int, input().rstrip().split())))
+
+    result = hourglassSum(arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
