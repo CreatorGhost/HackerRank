@@ -1,0 +1,32 @@
+def twoSum(ar,s,t): #funtion for find the sum of two numbers
+    
+    j=s         #start with the start with the value of i
+    i=len(ar)-1 #this starts at the last index
+    ms=[]
+    while j< len(ar):
+        sm=ar[i]+ar[j]
+        if sm == t:
+            return 1
+        elif sm > t:
+            i-=1
+        elif sm < t:
+            j+=1
+        if i==j:
+            return 0
+    return 0
+
+def srch(a,x):    #here we pass the array
+    c=0
+    a.sort()
+    t=x
+    for i in range (len(a)-2):
+        t=x-a[i]
+        c=twoSum(a,i,t)
+        if c==1:
+            return c
+    return c
+
+a=[int(x)for x in input().split()]
+x=int(input())
+ans=srch(a,x)
+print("ans",ans)
